@@ -1,0 +1,6 @@
+applicationType: cli
+defaultPackage: dev.logchange.eir
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, assertj, awaitility, github-workflow-ci, github-workflow-docker-registry, github-workflow-graal-docker-registry, graalvm, jackson-databind, java, junit, logback, lombok, maven, mockito, picocli, picocli-java-application, picocli-junit, readme, shade, yaml]
