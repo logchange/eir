@@ -8,7 +8,7 @@
 </p>
 
 - [pronunciation in Old Norse](https://www.youtube.com/watch?v=WcS67uFjFOI) also you can pronounce it as english `ear`
-- is a tool to report system vulnerabilities
+- is a tool to collect and report system vulnerabilities
 
 ```
 In Norse mythology, Eir (Old Norse: [ˈɛir], "protection, help, mercy"[1]) 
