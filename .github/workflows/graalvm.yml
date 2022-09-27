@@ -1,19 +1,18 @@
-# Uncomment when ready :)
-#name: GraalVM CE CI
-#on:
-#  push:
-#    branches: [ master ]
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/cache@v2
-#        with:
-#          path: |
-#            ~/.m2
-#          key: ${{ runner.os }}-maven-test-${{ hashFiles('**/pom.xml') }}
-#          restore-keys: ${{ runner.os }}-maven-test-
+name: GraalVM CE CI
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.m2
+          key: ${{ runner.os }}-maven-test-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-test-
 #      - name: Setup GraalVM CE
 #        uses: DeLaGuardo/setup-graalvm@3.1
 #        with:
