@@ -55,7 +55,7 @@ public class Location {
      */
     @JsonProperty("class")
     @JsonPropertyDescription("Provides the name of the class where the vulnerability is located.")
-    public String _class;
+    public String vclass;
     /**
      * Provides the name of the method where the vulnerability is located.
      * 

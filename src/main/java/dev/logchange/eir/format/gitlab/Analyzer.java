@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab.sast;
+package dev.logchange.eir.format.gitlab;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Object defining the scanner used to perform the scan.
+ * Object defining the analyzer used to perform the scan. Analyzers typically delegate to an underlying scanner to run the scan.
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -22,51 +22,50 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "id",
     "name",
     "url",
-    "version",
-    "vendor"
+    "vendor",
+    "version"
 })
 @Generated("jsonschema2pojo")
-public class Scanner {
+public class Analyzer {
 
     /**
-     * Unique id that identifies the scanner.
+     * Unique id that identifies the analyzer.
      * (Required)
      * 
      */
     @JsonProperty("id")
-    @JsonPropertyDescription("Unique id that identifies the scanner.")
+    @JsonPropertyDescription("Unique id that identifies the analyzer.")
     public String id;
     /**
-     * A human readable value that identifies the scanner, not required to be unique.
+     * A human readable value that identifies the analyzer, not required to be unique.
      * (Required)
      * 
      */
     @JsonProperty("name")
-    @JsonPropertyDescription("A human readable value that identifies the scanner, not required to be unique.")
+    @JsonPropertyDescription("A human readable value that identifies the analyzer, not required to be unique.")
     public String name;
     /**
-     * A link to more information about the scanner.
+     * A link to more information about the analyzer.
      * 
      */
     @JsonProperty("url")
-    @JsonPropertyDescription("A link to more information about the scanner.")
+    @JsonPropertyDescription("A link to more information about the analyzer.")
     public String url;
     /**
-     * The version of the scanner.
-     * (Required)
      * 
-     */
-    @JsonProperty("version")
-    @JsonPropertyDescription("The version of the scanner.")
-    public String version;
-    /**
-     * The vendor/maintainer of the scanner.
      * (Required)
      * 
      */
     @JsonProperty("vendor")
-    @JsonPropertyDescription("The vendor/maintainer of the scanner.")
-    public Vendor__1 vendor;
+    public Vendor vendor;
+    /**
+     * The version of the analyzer.
+     * (Required)
+     * 
+     */
+    @JsonProperty("version")
+    @JsonPropertyDescription("The version of the analyzer.")
+    public String version;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

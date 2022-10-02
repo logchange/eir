@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab.sast;
+package dev.logchange.eir.format.gitlab;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +37,7 @@ public class Scan {
     @JsonProperty("end_time")
     @JsonPropertyDescription("ISO8601 UTC value with format yyyy-mm-ddThh:mm:ss, representing when the scan finished.")
     public String endTime;
+
     @JsonProperty("messages")
     public List<Message> messages = null;
     /**
@@ -78,14 +79,14 @@ public class Scan {
      */
     @JsonProperty("type")
     @JsonPropertyDescription("Type of the scan.")
-    public Type type;
+    public String type;
     /**
      * An array containing an exhaustive list of primary identifiers for which the analyzer may return results
      * 
      */
     @JsonProperty("primary_identifiers")
     @JsonPropertyDescription("An array containing an exhaustive list of primary identifiers for which the analyzer may return results")
-    public List<PrimaryIdentifier> primaryIdentifiers = null;
+    public List<Identifier> primaryIdentifiers = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -135,50 +136,6 @@ public class Scan {
         @JsonCreator
         public static Status fromValue(String value) {
             Status constant = CONSTANTS.get(value);
-            if (constant == null) {
-                throw new IllegalArgumentException(value);
-            } else {
-                return constant;
-            }
-        }
-
-    }
-
-
-    /**
-     * Type of the scan.
-     * 
-     */
-    @Generated("jsonschema2pojo")
-    public enum Type {
-
-        SAST("sast");
-        private final String value;
-        private final static Map<String, Type> CONSTANTS = new HashMap<String, Type>();
-
-        static {
-            for (Type c: values()) {
-                CONSTANTS.put(c.value, c);
-            }
-        }
-
-        Type(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-
-        @JsonValue
-        public String value() {
-            return this.value;
-        }
-
-        @JsonCreator
-        public static Type fromValue(String value) {
-            Type constant = CONSTANTS.get(value);
             if (constant == null) {
                 throw new IllegalArgumentException(value);
             } else {

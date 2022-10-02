@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab.sast;
+package dev.logchange.eir.format.gitlab;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,61 +12,47 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-
-/**
- * Object defining the analyzer used to perform the scan. Analyzers typically delegate to an underlying scanner to run the scan.
- * 
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
+    "type",
     "name",
     "url",
-    "vendor",
-    "version"
+    "value"
 })
 @Generated("jsonschema2pojo")
-public class Analyzer {
+public class Identifier {
 
     /**
-     * Unique id that identifies the analyzer.
+     * for example, cve, cwe, osvdb, usn, or an analyzer-dependent type such as gemnasium).
      * (Required)
      * 
      */
-    @JsonProperty("id")
-    @JsonPropertyDescription("Unique id that identifies the analyzer.")
-    public String id;
+    @JsonProperty("type")
+    @JsonPropertyDescription("for example, cve, cwe, osvdb, usn, or an analyzer-dependent type such as gemnasium).")
+    public String type;
     /**
-     * A human readable value that identifies the analyzer, not required to be unique.
+     * Human-readable name of the identifier.
      * (Required)
      * 
      */
     @JsonProperty("name")
-    @JsonPropertyDescription("A human readable value that identifies the analyzer, not required to be unique.")
+    @JsonPropertyDescription("Human-readable name of the identifier.")
     public String name;
     /**
-     * A link to more information about the analyzer.
+     * URL of the identifier's documentation.
      * 
      */
     @JsonProperty("url")
-    @JsonPropertyDescription("A link to more information about the analyzer.")
+    @JsonPropertyDescription("URL of the identifier's documentation.")
     public String url;
     /**
-     * The vendor/maintainer of the analyzer.
+     * Value of the identifier, for matching purpose.
      * (Required)
      * 
      */
-    @JsonProperty("vendor")
-    @JsonPropertyDescription("The vendor/maintainer of the analyzer.")
-    public Vendor vendor;
-    /**
-     * The version of the analyzer.
-     * (Required)
-     * 
-     */
-    @JsonProperty("version")
-    @JsonPropertyDescription("The version of the analyzer.")
-    public String version;
+    @JsonProperty("value")
+    @JsonPropertyDescription("Value of the identifier, for matching purpose.")
+    public String value;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab.sast;
+package dev.logchange.eir.format.gitlab;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,45 +14,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "type",
     "name",
-    "url",
-    "value"
+    "url"
 })
 @Generated("jsonschema2pojo")
-public class Identifier {
+public class Link {
 
     /**
-     * for example, cve, cwe, osvdb, usn, or an analyzer-dependent type such as gemnasium).
-     * (Required)
-     * 
-     */
-    @JsonProperty("type")
-    @JsonPropertyDescription("for example, cve, cwe, osvdb, usn, or an analyzer-dependent type such as gemnasium).")
-    public String type;
-    /**
-     * Human-readable name of the identifier.
-     * (Required)
+     * Name of the vulnerability details link.
      * 
      */
     @JsonProperty("name")
-    @JsonPropertyDescription("Human-readable name of the identifier.")
+    @JsonPropertyDescription("Name of the vulnerability details link.")
     public String name;
     /**
-     * URL of the identifier's documentation.
-     * 
-     */
-    @JsonProperty("url")
-    @JsonPropertyDescription("URL of the identifier's documentation.")
-    public String url;
-    /**
-     * Value of the identifier, for matching purpose.
+     * URL of the vulnerability details document.
      * (Required)
      * 
      */
-    @JsonProperty("value")
-    @JsonPropertyDescription("Value of the identifier, for matching purpose.")
-    public String value;
+    @JsonProperty("url")
+    @JsonPropertyDescription("URL of the vulnerability details document.")
+    public String url;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

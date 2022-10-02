@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab.sast;
+package dev.logchange.eir.format.gitlab;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,42 +16,33 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * Informational flags identified and assigned to a vulnerability.
+ * Communication intended for the initiator of a scan.
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "type",
-    "origin",
-    "description"
+    "level",
+    "value"
 })
 @Generated("jsonschema2pojo")
-public class Flag {
+public class Message {
 
     /**
-     * Result of the scan.
+     * Describes the severity of the communication. Use info to communicate normal scan behaviour; warn to communicate a potentially recoverable problem, or a partial error; fatal to communicate an issue that causes the scan to halt.
      * (Required)
      * 
      */
-    @JsonProperty("type")
-    @JsonPropertyDescription("Result of the scan.")
-    public Type type;
+    @JsonProperty("level")
+    @JsonPropertyDescription("Describes the severity of the communication. Use info to communicate normal scan behaviour; warn to communicate a potentially recoverable problem, or a partial error; fatal to communicate an issue that causes the scan to halt.")
+    public Level level;
     /**
-     * Tool that issued the flag.
+     * The message to communicate.
      * (Required)
      * 
      */
-    @JsonProperty("origin")
-    @JsonPropertyDescription("Tool that issued the flag.")
-    public String origin;
-    /**
-     * What the flag is about.
-     * (Required)
-     * 
-     */
-    @JsonProperty("description")
-    @JsonPropertyDescription("What the flag is about.")
-    public String description;
+    @JsonProperty("value")
+    @JsonPropertyDescription("The message to communicate.")
+    public String value;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -67,23 +58,25 @@ public class Flag {
 
 
     /**
-     * Result of the scan.
+     * Describes the severity of the communication. Use info to communicate normal scan behaviour; warn to communicate a potentially recoverable problem, or a partial error; fatal to communicate an issue that causes the scan to halt.
      * 
      */
     @Generated("jsonschema2pojo")
-    public enum Type {
+    public enum Level {
 
-        FLAGGED_AS_LIKELY_FALSE_POSITIVE("flagged-as-likely-false-positive");
+        INFO("info"),
+        WARN("warn"),
+        FATAL("fatal");
         private final String value;
-        private final static Map<String, Type> CONSTANTS = new HashMap<String, Type>();
+        private final static Map<String, Level> CONSTANTS = new HashMap<String, Level>();
 
         static {
-            for (Type c: values()) {
+            for (Level c: values()) {
                 CONSTANTS.put(c.value, c);
             }
         }
 
-        Type(String value) {
+        Level(String value) {
             this.value = value;
         }
 
@@ -98,8 +91,8 @@ public class Flag {
         }
 
         @JsonCreator
-        public static Type fromValue(String value) {
-            Type constant = CONSTANTS.get(value);
+        public static Level fromValue(String value) {
+            Level constant = CONSTANTS.get(value);
             if (constant == null) {
                 throw new IllegalArgumentException(value);
             } else {
