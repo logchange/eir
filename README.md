@@ -14,3 +14,9 @@
 In Norse mythology, Eir (Old Norse: [ˈɛir], "protection, help, mercy"[1]) 
 is a goddess or valkyrie associated with medical skill. 
 ```
+
+
+## GitLab
+
+### Requriements
+- https://docs.gitlab.com/ee/user/markdown.html#latex-compatible-fencing
