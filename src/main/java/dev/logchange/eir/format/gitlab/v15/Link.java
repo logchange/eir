@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab;
+package dev.logchange.eir.format.gitlab.v15;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,60 +12,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-
-/**
- * Object defining the scanner used to perform the scan.
- * 
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
     "name",
-    "url",
-    "version",
-    "vendor"
+    "url"
 })
 @Generated("jsonschema2pojo")
-public class Scanner {
+public class Link {
 
     /**
-     * Unique id that identifies the scanner.
-     * (Required)
-     * 
-     */
-    @JsonProperty("id")
-    @JsonPropertyDescription("Unique id that identifies the scanner.")
-    public String id;
-    /**
-     * A human readable value that identifies the scanner, not required to be unique.
-     * (Required)
+     * Name of the vulnerability details link.
      * 
      */
     @JsonProperty("name")
-    @JsonPropertyDescription("A human readable value that identifies the scanner, not required to be unique.")
+    @JsonPropertyDescription("Name of the vulnerability details link.")
     public String name;
     /**
-     * A link to more information about the scanner.
+     * URL of the vulnerability details document.
+     * (Required)
      * 
      */
     @JsonProperty("url")
-    @JsonPropertyDescription("A link to more information about the scanner.")
+    @JsonPropertyDescription("URL of the vulnerability details document.")
     public String url;
-    /**
-     * The version of the scanner.
-     * (Required)
-     * 
-     */
-    @JsonProperty("version")
-    @JsonPropertyDescription("The version of the scanner.")
-    public String version;
-    /**
-     * 
-     * (Required)
-     * 
-     */
-    @JsonProperty("vendor")
-    public Vendor__1 vendor;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

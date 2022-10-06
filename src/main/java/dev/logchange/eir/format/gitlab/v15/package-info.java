@@ -10,4 +10,4 @@
  * Annotation style: Jackson 2.x
  * Options: Use long integers, Use double numbers, Allow additional properties
  */
-package dev.logchange.eir.format.gitlab;
+package dev.logchange.eir.format.gitlab.v15;

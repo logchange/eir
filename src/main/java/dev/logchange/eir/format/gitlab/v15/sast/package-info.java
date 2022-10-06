@@ -4,4 +4,4 @@
  * Version: 15.0.2
  * Commit: 418ca9bd -- 418ca9bd81c7a99f51706b50b033c69b13f5d744
  */
-package dev.logchange.eir.format.gitlab.sast;
+package dev.logchange.eir.format.gitlab.v15.sast;

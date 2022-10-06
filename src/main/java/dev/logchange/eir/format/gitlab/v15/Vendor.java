@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab;
+package dev.logchange.eir.format.gitlab.v15;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,19 +14,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id"
+    "name"
 })
 @Generated("jsonschema2pojo")
-public class Fix {
+public class Vendor {
 
     /**
-     * Unique identifier of the vulnerability. This is recommended to be a UUID.
+     * The name of the vendor.
      * (Required)
      * 
      */
-    @JsonProperty("id")
-    @JsonPropertyDescription("Unique identifier of the vulnerability. This is recommended to be a UUID.")
-    public String id;
+    @JsonProperty("name")
+    @JsonPropertyDescription("The name of the vendor.")
+    public String name;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

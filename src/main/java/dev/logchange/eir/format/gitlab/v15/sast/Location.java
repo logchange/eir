@@ -1,5 +1,5 @@
 
-package dev.logchange.eir.format.gitlab.sast;
+package dev.logchange.eir.format.gitlab.v15.sast;
 
 import java.util.HashMap;
 import java.util.Map;
