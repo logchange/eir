@@ -1,19 +1,22 @@
 package dev.logchange.eir.format;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.logchange.eir.format.gitlab.v15.sast.SastReport;
+import dev.logchange.eir.format.general.GeneralReport;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+
+import java.util.List;
 
 @Singleton
 @RequiredArgsConstructor
 public class ReportsReader {
 
-    private final ObjectMapper objectMapper;
+    private final List<ReportReader> readers;
 
     @SneakyThrows
-    public SastReport parse(String json){
-        return objectMapper.readValue(json, SastReport.class);
+    public GeneralReport parse(ReportType reportType, String reportContent){
+        return readers.stream()
+                .filter(reader ->reader.canRead(reportType, reportContent))
+                .findFirst().orElseThrow().read(reportContent);
     }
 }

@@ -1,6 +1,8 @@
 package dev.logchange.eir.format.gitlab.sast;
 
+import dev.logchange.eir.format.ReportType;
 import dev.logchange.eir.format.ReportsReader;
+import dev.logchange.eir.format.general.GeneralReport;
 import dev.logchange.eir.format.gitlab.v15.sast.SastReport;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
@@ -25,9 +27,9 @@ class SastReportIntagrationTest {
         String content = Files.readString(Path.of(reportPath), StandardCharsets.UTF_8);
 
         //when:
-        SastReport sastReport = reader.parse(content);
+        GeneralReport report = reader.parse(ReportType.GITLAB_SAST, content);
 
         //then:
-        Assertions.assertEquals(5, sastReport.vulnerabilities.size());
+        Assertions.assertEquals(5, report.getVulnerabilities().size());
     }
 }

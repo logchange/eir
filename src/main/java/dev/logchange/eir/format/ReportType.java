@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum ReportTypes {
+public enum ReportType {
 
     UNKNOWN(null), // This property is used, to autodetect report type
     GITLAB_SAST(SastReport.class); // Always the newest GitLab SAST report
