@@ -3,7 +3,6 @@ package dev.logchange.eir.format.gitlab.sast;
 import dev.logchange.eir.format.ReportType;
 import dev.logchange.eir.format.ReportsReader;
 import dev.logchange.eir.format.general.GeneralReport;
-import dev.logchange.eir.format.gitlab.v15.sast.SastReport;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;

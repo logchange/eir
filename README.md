@@ -18,5 +18,12 @@ is a goddess or valkyrie associated with medical skill.
 
 ## GitLab
 
-### Requriements
+### Requirements
 - https://docs.gitlab.com/ee/user/markdown.html#latex-compatible-fencing
+
+
+## Supported files
+
+List of files that are supported and autdetect in path:
+
+- `gl-sast*report.json`
