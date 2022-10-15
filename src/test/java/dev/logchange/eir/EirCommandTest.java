@@ -22,7 +22,7 @@ public class EirCommandTest {
             PicocliRunner.run(EirCommand.class, ctx, args);
 
             // eir
-            assertTrue(baos.toString().contains("Hi!"));
+            assertTrue(baos.toString().contains("Verbose is active!"));
         }
     }
 }

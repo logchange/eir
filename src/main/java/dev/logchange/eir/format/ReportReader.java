@@ -1,9 +1,10 @@
 package dev.logchange.eir.format;
 
-import dev.logchange.eir.format.general.GeneralReport;
+import dev.logchange.eir.domain.report.GeneralReport;
+import dev.logchange.eir.domain.report.ReportFile;
 
 public interface ReportReader {
 
-    boolean canRead(ReportType reportType, String reportContent);
-    GeneralReport read(String reportContent) throws Exception;
+    boolean canRead(ReportType reportType, ReportFile reportFile);
+    GeneralReport read(String reportContent);
 }

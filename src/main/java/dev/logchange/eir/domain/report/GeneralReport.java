@@ -1,4 +1,4 @@
-package dev.logchange.eir.format.general;
+package dev.logchange.eir.domain.report;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

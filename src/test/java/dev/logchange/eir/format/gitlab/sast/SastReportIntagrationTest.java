@@ -1,8 +1,9 @@
 package dev.logchange.eir.format.gitlab.sast;
 
+import dev.logchange.eir.domain.report.GeneralReport;
+import dev.logchange.eir.domain.report.ReportFile;
 import dev.logchange.eir.format.ReportType;
 import dev.logchange.eir.format.ReportsReader;
-import dev.logchange.eir.format.general.GeneralReport;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
@@ -26,7 +27,7 @@ class SastReportIntagrationTest {
         String content = Files.readString(Path.of(reportPath), StandardCharsets.UTF_8);
 
         //when:
-        GeneralReport report = reader.parse(ReportType.GITLAB_SAST, content);
+        GeneralReport report = reader.parse(ReportType.GITLAB_SAST, new ReportFile("gl-sast-report_semgrep_v_15_0_0.json", content));
 
         //then:
         Assertions.assertEquals(5, report.getVulnerabilities().size());

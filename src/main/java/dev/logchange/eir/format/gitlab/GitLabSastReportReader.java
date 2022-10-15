@@ -1,14 +1,16 @@
 package dev.logchange.eir.format.gitlab;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.logchange.eir.domain.report.GeneralReport;
+import dev.logchange.eir.domain.report.ReportFile;
+import dev.logchange.eir.domain.report.Severity;
+import dev.logchange.eir.domain.report.Vulnerability;
 import dev.logchange.eir.format.ReportReader;
 import dev.logchange.eir.format.ReportType;
-import dev.logchange.eir.format.general.GeneralReport;
-import dev.logchange.eir.format.general.Severity;
-import dev.logchange.eir.format.general.Vulnerability;
 import dev.logchange.eir.format.gitlab.v15.sast.SastReport;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,23 +22,24 @@ public class GitLabSastReportReader implements ReportReader {
     private final ObjectMapper objectMapper;
 
     @Override
-    public boolean canRead(ReportType reportType, String reportContent) {
-        if(ReportType.GITLAB_SAST.equals(reportType)){
+    public boolean canRead(ReportType reportType, ReportFile reportFile) {
+        if (ReportType.GITLAB_SAST.equals(reportType)) {
             return true;
         }
-        if(ReportType.UNKNOWN.equals(reportType)){
-            return canRead(reportContent);
+        if (ReportType.UNKNOWN.equals(reportType)) {
+            return canRead(reportFile);
         }
         return false;
     }
 
-    private boolean canRead(String reportContent) {
+    private boolean canRead(ReportFile reportFile) {
         //TODO f.e. try to read and check if its not null?
         return false;
     }
 
+    @SneakyThrows
     @Override
-    public GeneralReport read(String reportContent) throws Exception {
+    public GeneralReport read(String reportContent){
         SastReport sastReport = objectMapper.readValue(reportContent, SastReport.class);
 
         return convert(sastReport);

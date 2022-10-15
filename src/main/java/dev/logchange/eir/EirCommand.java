@@ -1,14 +1,12 @@
 package dev.logchange.eir;
 
-import dev.logchange.eir.format.ReportsReader;
+import dev.logchange.eir.domain.report.GenerateReportUseCase;
+import dev.logchange.eir.domain.report.GenerateReportUseCase.GenerateReportCommand;
 import io.micronaut.configuration.picocli.PicocliRunner;
 import io.micronaut.logging.LogLevel;
 import io.micronaut.logging.LoggingSystem;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -33,6 +31,9 @@ public class EirCommand implements Runnable {
     @Inject
     LoggingSystem loggingSystem;
 
+    @Inject
+    GenerateReportUseCase generateReportUseCase;
+
     public static void main(String[] args) throws Exception {
         PicocliRunner.run(EirCommand.class, args);
     }
@@ -46,7 +47,7 @@ public class EirCommand implements Runnable {
         File workingDir = getWorkingDir();
         List<File> files = getFilesInDir(workingDir);
 
-
+        generateReportUseCase.handle(new GenerateReportCommand(files));
     }
 
     /**
@@ -61,7 +62,8 @@ public class EirCommand implements Runnable {
             return Collections.emptyList();
         }
 
-        return Arrays.stream(files).filter(File::isFile)
+        return Arrays.stream(files)
+                .filter(File::isFile)
                 .peek(file -> log.debug(file.getName()))
                 .collect(Collectors.toList());
     }
