@@ -33,6 +33,10 @@ public class GitLabSastReportReader implements ReportReader {
     }
 
     private boolean canRead(ReportFile reportFile) {
+        if(reportFile.fileName().matches("^gl-sast.*\\.(json)$")){
+            //TODO check content?
+            return true;
+        }
         //TODO f.e. try to read and check if its not null?
         return false;
     }
